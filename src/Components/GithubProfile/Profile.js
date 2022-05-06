@@ -1,8 +1,9 @@
 import React from 'react';
 import { useAppContext } from '../../context/AppContext';
-import { ReactComponent as BlogIcon } from '../../images/blog-solid.svg';
-import { ReactComponent as TwitterIcon } from '../../images/twitter-brands.svg';
-import { ReactComponent as Email } from '../../images/envelope-solid.svg';
+import { Avatar } from './Avatar/Avatar';
+import { Info } from './Info/Info';
+import { FollowStats } from './Follow/FollowStats';
+import { Social } from './Social/Social';
 
 export const Profile = () => {
 
@@ -14,38 +15,11 @@ export const Profile = () => {
                 <h2>Profile for Github User - {githubData.login}</h2>
                 <div className='profile-card'>
                     <div className='header'></div>
-                    <div className='avatar'>
-                        <img src={githubData.avatar_url} alt="Github Avatar" />
-                    </div>
-                    <div className='info'>
-                        {githubData.name ? <span className='name'>{githubData.name}</span> : null}
-                        {githubData.bio ? <span className='bio'>{githubData.bio}</span> : null}
-                    </div>
-                    <div className='follow-stats'>
-                        <div className='following'>
-                            <span className='number'>{githubData.following}</span>
-                            <span className='label'>Following</span>
-                        </div>
-                        <div className='followers'>
-                            <span className='number'>{githubData.followers}</span>
-                            <span className='label'>Followers</span>
-                        </div>
-                    </div>
-                    <div className='github-stats'></div>
+                    <Avatar url={githubData.avatar_url} />
+                    <Info name={githubData.name} bio={githubData.bio} />
+                    <FollowStats following={githubData.following} followers={githubData.followers} />
                     <button className='btn btn-primary github-btn' href={githubData.html_url}>Visit profile on Github</button>
-                    {githubData.blog || githubData.twitter_username ? 
-                    <div className='social'>
-                        {githubData.blog ?
-                            <a href={githubData.blog}  className='blog'><BlogIcon /></a>
-                         : null }
-                         {githubData.twitter_username ?
-                            <a href={`https://twitter.com/${githubData.blog}`} className='twitter'><TwitterIcon /></a>
-                        : null }
-                         {githubData.email ?
-                            <a href={`mailto:${githubData.email}`} className='email'><Email /></a>
-                        : null }
-                    </div> 
-                    : null}
+                    <Social blog={githubData.blog} twitter={githubData.twitter_username} email={githubData.email} />
                 </div>
             </div>
         </section>
