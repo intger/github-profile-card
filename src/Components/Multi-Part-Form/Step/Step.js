@@ -2,6 +2,7 @@ import React, { useState} from "react";
 import { useAppContext } from '../../../context/AppContext';
 import { Input } from './Input/Input';
 import { validator } from '../../../shared/utility';
+import { getUsername } from "../../../shared/getUsername";
 
 export const Step = ({data, isActive}) => {
     const fieldArray = [];
@@ -69,24 +70,18 @@ export const Step = ({data, isActive}) => {
         }
     }
 
-    const fetchGithubData = (formData) => {
+    const fetchGithubData = async (formData) => {
         const githubUsername = formData.steps.step2.fields.username.value;
         
         if (formData.formIsValid) {
             // fetch github data
-            fetch(`https://api.github.com/users/${githubUsername}`)
-            .then(res => {
-                if (res.status === 200) {
-                    setGithubError(false);
-                    return res.json();
-                } else {
-                    setGithubError(true);
-                }
-            })
-            .then(data => {
-                setGithubData(data);
-            })
-            .catch(err => console.log(err));
+            const usernameData = await getUsername(githubUsername);
+            if (usernameData) {
+                setGithubError(false);
+                setGithubData(usernameData);
+            } else {
+                setGithubError(true);
+            }
         }
     }
 
