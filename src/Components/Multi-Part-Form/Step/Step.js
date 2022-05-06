@@ -98,7 +98,10 @@ export const Step = ({data, isActive}) => {
             {data.id !== "step1" && (
               <button
                 className="back btn btn-secondary"
-                onClick={() => setActiveStep(activeStep - 1)}
+                onClick={() => {
+                    setActiveStep(activeStep - 1);
+                    setGithubError(false);
+                }}
               >
                 Back
               </button>
