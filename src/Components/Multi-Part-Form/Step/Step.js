@@ -86,17 +86,33 @@ export const Step = ({data, isActive}) => {
     }
 
     return (
-        <div className={`step ${isActive ? 'active' : ''}`} id={`${data.id}`}>
-            <div className="step-content">
-                <div className='form-fields'>
-                    {fields}
-                </div>
-                {githubError ? <span className="error-message">User not found. Go back and enter another username!</span> : null}
-                <div className='buttons-wrapper'>
-                    { data.id !== 'step1' && <button className='back btn btn-secondary' onClick={() => setActiveStep(activeStep - 1)}>Back</button>}
-                    <button className={`next btn btn-primary ${data.stepIsValid ? '' : 'disabled'}`} onClick={() => nextButtonHandler(activeStep, form)}>{data.id === 'step3' ? 'Show Info' : 'Next'}</button>
-                </div>
-            </div>
+      <div className={`step ${isActive ? "active" : ""}`} id={`${data.id}`}>
+        <div className="step-content">
+          <div className="form-fields">{fields}</div>
+          {githubError ? (
+            <span className="error-message">
+              User not found. Go back and enter another username!
+            </span>
+          ) : null}
+          <div className="buttons-wrapper">
+            {data.id !== "step1" && (
+              <button
+                className="back btn btn-secondary"
+                onClick={() => setActiveStep(activeStep - 1)}
+              >
+                Back
+              </button>
+            )}
+            <button
+              className={`next btn btn-primary ${
+                data.stepIsValid ? "" : "disabled"
+              }`}
+              onClick={() => nextButtonHandler(activeStep, form)}
+            >
+              {data.id === "step3" ? "Show Info" : "Next"}
+            </button>
+          </div>
         </div>
+      </div>
     );
 }
