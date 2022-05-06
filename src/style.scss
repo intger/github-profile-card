@@ -1,0 +1,9 @@
+@import "bootstrap/scss/functions";
+@import "bootstrap/scss/variables";
+@import "bootstrap/scss/mixins/_breakpoints";
+@import 'bootstrap/dist/css/bootstrap.min.css';
+@import './styles/variables';
+@import './styles/main';
+@import './styles/form';
+@import './styles/step';
+@import './styles/profile';

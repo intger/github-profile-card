@@ -1,0 +1,100 @@
+
+.steps-container {
+    position: relative;
+    display: flex;
+    flex-flow: row nowrap;
+    width: 90%;
+    outline: 16px solid rgba(26,23,31,0.45);
+    box-shadow: 0 0 4px 0 rgb(0 0 0 / 40%);
+    border-radius: 3px;
+    margin: 2rem 0;
+    @include media-breakpoint-up(lg) {
+        width: 40rem;
+    }
+    margin: 4rem auto;
+    overflow: hidden;
+    border: 1px solid $mid-gray;
+    min-height: 20rem;
+    .step {
+        width: 100%;
+        background-color: $white;
+        border-radius: 4px;
+        padding: 3rem 1.5rem;
+        height: 100%;
+        position: absolute;
+        z-index: -10;
+        right: -100%;
+        opacity: 0;
+        transition: right ease-in .35s, opacity ease-in .2s;
+        &.active {
+            position: relative;
+            z-index: 10;
+            right: 0;
+            opacity: 1;
+            transition: right ease-in .35s, opacity ease-in .2s;
+        }
+        .intro {
+            h2 {
+                text-align: center;
+                margin-bottom: 1.5rem;
+            }
+        }
+
+        .step-content {
+            width: 90%;
+            margin: 0 auto;
+            .buttons-wrapper {
+                display: flex;
+                flex-flow: row wrap;
+                justify-content: space-between;
+                margin-top: 2rem;
+                .next {
+                    margin-left: auto;
+                }
+            }
+            .form-fields {
+                display: flex;
+                flex-flow: row wrap;
+
+                .form-field {
+                    width: 100%;
+                    margin: 1rem 0;
+                    &.invalid {
+                        input {
+                            border: 1px solid $red;
+                        }
+                        span {
+                            color: $red;
+                        }
+                    }
+                    input {
+                        width: 100%;
+                        padding: .5rem;
+                        border: 1px solid $mid-gray;
+                        border-radius: 5px;
+                        &#terms {
+                            width: fit-content;
+                            margin-right: .5rem;
+                            box-sizing: border-box;
+                        }
+                    }
+                    .label:not(.terms) {
+                        display: none;
+                    }
+                    span {
+                        display: block;
+                    }
+                }
+            }
+            .error-message {
+                display: block;
+                background-color: $red;
+                width: 80%;
+                margin: 1rem auto;
+                padding: .5rem 1rem;
+                color: $white;
+
+            }
+        }
+    }
+}
