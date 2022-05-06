@@ -8,8 +8,6 @@ export const Profile = () => {
 
     const {githubData} = useAppContext();
 
-    console.log(githubData);
-
     return (
         <section className='github-profile'>
             <div className='container'>
@@ -20,8 +18,8 @@ export const Profile = () => {
                         <img src={githubData.avatar_url} alt="Github Avatar" />
                     </div>
                     <div className='info'>
-                        <span className='name'>{githubData.name}</span>
-                        <span className='bio'>{githubData.bio}</span>
+                        {githubData.name ? <span className='name'>{githubData.name}</span> : null}
+                        {githubData.bio ? <span className='bio'>{githubData.bio}</span> : null}
                     </div>
                     <div className='follow-stats'>
                         <div className='following'>
