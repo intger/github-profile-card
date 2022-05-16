@@ -18,7 +18,7 @@ export const Profile = () => {
                     <Avatar url={githubData.avatar_url} />
                     <Info name={githubData.name} bio={githubData.bio} />
                     <FollowStats following={githubData.following} followers={githubData.followers} />
-                    <button className='btn btn-primary github-btn' href={githubData.html_url}>Visit profile on Github</button>
+                    <a className='btn btn-primary github-btn' target="_blank" rel="noreferrer" href={githubData.html_url}>Visit profile on Github</a>
                     <Social blog={githubData.blog} twitter={githubData.twitter_username} email={githubData.email} />
                 </div>
             </div>
